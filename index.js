@@ -118,6 +118,10 @@ const TOOLS = [
           type: 'string',
           description: '书籍 ID（从 search_zlib 的结果中获取）',
         },
+        book_hash: {
+          type: 'string',
+          description: '书籍 Hash（从 search_zlib 的结果中获取）',
+        },
         format: {
           type: 'string',
           description: '下载格式：epub（推荐用于 Kindle）, pdf, mobi, azw3',
@@ -128,7 +132,7 @@ const TOOLS = [
           description: '自定义文件名（不含后缀），不填则自动生成',
         },
       },
-      required: ['book_id'],
+      required: ['book_id', 'book_hash'],
     },
   },
   {
@@ -234,7 +238,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       if (result.success) {
         const bookList = result.books
           .map((b, i) =>
-            `${i + 1}. **${b.title}** - ${b.author} | ${b.format.toUpperCase()} | ${b.size} | ${b.language} | ID: \`${b.id}\``
+            `${i + 1}. **${b.title}** - ${b.author} | ${b.format.toUpperCase()} | ${b.size} | ${b.language} | ID: \`${b.id}\` | Hash: \`${b.hash}\``
           )
           .join('\n');
 
@@ -258,6 +262,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     case 'download_book': {
       const result = await zlib.downloadBook({
         bookId: args.book_id,
+        bookHash: args.book_hash,
         format: args.format || 'epub',
         filename: args.filename,
       });
@@ -414,6 +419,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       // Step 2: Download
       const dlResult = await zlib.downloadBook({
         bookId: best.id,
+        bookHash: best.hash,
         format: best.format,
         filename: best.title.replace(/[/\\?%*:|"<>]/g, '_').substring(0, 80),
       });
