@@ -463,8 +463,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               `${preview}\n✅ 下载成功 (${dlResult.size})\n\n` +
               `## ❌ 发送到 Kindle 失败\n${sendResult.message}\n\n` +
               `文件已下载到 \`${dlResult.file_path}\`，可以稍后手动发送。`,
-          ],
-        ],
+          }],
         isError: true,
       };
     }
