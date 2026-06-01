@@ -1,0 +1,12 @@
+{
+  "zlibrary_email": "your-email@example.com",
+  "zlibrary_password": "your-zlibrary-password",
+  "calibre_library_path": "D:/Calibre Library",
+  "kindle_email": "your-kindle@kindle.com",
+  "smtp_server": "smtp.qq.com",
+  "smtp_port": 587,
+  "smtp_user": "your-email@qq.com",
+  "smtp_password": "your-smtp-auth-code",
+  "smtp_encryption": "TLS",
+  "download_dir": "./downloads"
+}

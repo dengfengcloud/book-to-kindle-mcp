@@ -1,0 +1,35 @@
+{
+  "name": "book-to-kindle-mcp",
+  "version": "1.0.0",
+  "description": "One-click MCP server: search Z-Library → download → send to Kindle. Orchestrates Z-Library EAPI, Calibre, and email delivery.",
+  "main": "index.js",
+  "bin": {
+    "book-to-kindle-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "kindle",
+    "zlibrary",
+    "calibre",
+    "ebook",
+    "claude-code"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "axios": "^1.7.0",
+    "tough-cookie": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
